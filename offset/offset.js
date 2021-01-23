@@ -34,3 +34,25 @@ const offset = ele => {
 
     return result;
 }
+
+const offsetUseBounding = ele => {
+    let result = {
+        left: 0,
+        top: 0
+    };
+
+    if (!ele.getClientRects().length) {
+        return result;
+    }
+
+    if (window.getComputedStyle(ele).display === 'none') {
+        return result;
+    }
+
+    let {top, left} = ele.getBoundingClientRect();
+    let docElement = ele.ownerDocument.documentElement;
+    result.left = left + window.pageXOffset - docElement.clientLeft;
+    result.top = top + window.pageYOffset - docElement.clientTop;
+
+    return result;
+}

@@ -1,7 +1,7 @@
 Array.prototype.iReduce = function (callback, accumulator) {
     accumulator = accumulator === undefined ? 0 : accumulator;
     for (let i = 0; i < this.length; i++) {
-        accumulator = callback(this[i], accumulator);
+        accumulator = callback(accumulator, this[i]);
     }
 
     return accumulator;

@@ -3,7 +3,7 @@ function _new(ctor, ...args) {
         throw new TypeError('ctor must be a function');
     }
 
-    let obj = new Object();
+    let obj = {};
     obj.__proto__ = Object.create(ctor.prototype);
     let res = ctor.apply(obj, [...args]);
 
